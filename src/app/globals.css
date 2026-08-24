@@ -209,6 +209,23 @@ body::after {
 .claim-grounded { border-left: 1px solid color-mix(in oklab, #63b295 46%, transparent); }
 
 /* -------------------------------------------------------------------------
+   The bottom rail.
+
+   The sidebar footer and the input column's action bar sit side by side at the
+   foot of the screen, so they have to share a height. Left to size themselves
+   they land their primary buttons on different lines, and the eye reads the
+   mismatch as a rendering fault rather than as two independent panels. One
+   class, one number, both bars — so they cannot drift apart when either one's
+   contents change.
+   ------------------------------------------------------------------------- */
+
+.footer-rail {
+  min-height: 6.875rem;
+  border-top: 1px solid var(--color-rule);
+  padding-block: 0.75rem;
+}
+
+/* -------------------------------------------------------------------------
    Controls
    ------------------------------------------------------------------------- */
 

@@ -103,7 +103,7 @@ export function Sidebar({
         </ul>
       </nav>
 
-      <div className="space-y-2 border-t border-rule px-3 py-3">
+      <div className="footer-rail space-y-2 px-3">
         <button type="button" onClick={onOpenSettings} className="btn w-full">
           API key
         </button>
@@ -133,9 +133,6 @@ export function Sidebar({
             Clear history
           </button>
         )}
-
-        <p className="pt-1 text-center font-mono text-[0.5rem] uppercase tracking-[0.1em] text-ink-faint">
-        </p>
       </div>
     </div>
   );

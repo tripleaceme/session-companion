@@ -295,7 +295,7 @@ export default function Page() {
         <div className="grid min-h-0 flex-1 lg:grid-cols-[minmax(0,27rem)_minmax(0,1fr)]">
           {/* ---------------- Input column ---------------- */}
           <section
-            className={`min-h-0 overflow-y-auto border-rule px-4 py-5 sm:px-5 lg:block lg:border-r ${
+            className={`min-h-0 overflow-y-auto border-rule px-4 pt-5 sm:px-5 lg:block lg:border-r ${
               pane === "input" ? "block" : "hidden"
             }`}
           >
@@ -322,7 +322,7 @@ export default function Page() {
                   onChange={updateContext}
                 />
 
-                <div className="sticky bottom-0 -mx-4 border-t border-rule bg-paper/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5">
+                <div className="footer-rail sticky bottom-0 -mx-4 bg-paper/95 px-4 backdrop-blur sm:-mx-5 sm:px-5">
                   <button
                     type="button"
                     onClick={runBriefing}
