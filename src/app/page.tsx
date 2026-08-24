@@ -3,10 +3,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSessions } from "@/hooks/useSessions";
 import { scoreContext, hasMinimumContext } from "@/lib/context-score";
-import { scoreNotes } from "@/lib/notes-score";
 import { loadApiKey, newId } from "@/lib/storage";
 import { ContextBreakdown, ContextMeter } from "@/components/ContextMeter";
-import { NotesMeter } from "@/components/NotesMeter";
 import { ContextForm } from "@/components/ContextForm";
 import { BriefingView } from "@/components/BriefingView";
 import { CompareView, RunStrip } from "@/components/RunHistory";
@@ -59,8 +57,6 @@ export default function Page() {
     () => scoreContext(active?.context ?? ({} as SessionContext)),
     [active?.context],
   );
-
-  const notesScore = useMemo(() => scoreNotes(active?.notes ?? ""), [active?.notes]);
 
   // Retune the ambient page glow to the current reading. The gradient lives on
   // body::after, which resolves --signal from :root, so the class has to go on
@@ -296,14 +292,13 @@ export default function Page() {
           </p>
         )}
 
-        <div className="grid min-h-0 flex-1 lg:grid-cols-2">
+        <div className="grid min-h-0 flex-1 lg:grid-cols-[minmax(0,27rem)_minmax(0,1fr)]">
           {/* ---------------- Input column ---------------- */}
           <section
             className={`min-h-0 overflow-y-auto border-rule px-4 py-5 sm:px-5 lg:block lg:border-r ${
               pane === "input" ? "block" : "hidden"
             }`}
           >
-            <div className="mx-auto w-full max-w-2xl">
             {phase === "before" ? (
               <div className="space-y-6">
                 <ContextMeter score={score} />
@@ -349,40 +344,33 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              /* Deliberately the same shape as the Before column: gauge, then
-                 the input, then a sticky action bar. Both halves make the same
-                 argument, so both should look like the same instrument. */
-              <div className="space-y-6">
-                <NotesMeter score={notesScore} />
-
-                <div className="space-y-3">
+              <div className="space-y-4">
+                <div>
                   <p className="label">Your notes from the session</p>
-                  <NotesInput
-                    notes={active.notes}
-                    onChange={setNotes}
-                    onAppend={appendNotes}
-                  />
                 </div>
 
-                <div className="sticky bottom-0 -mx-4 border-t border-rule bg-paper/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5">
-                  <button
-                    type="button"
-                    onClick={runDebrief}
-                    disabled={!canDebrief}
-                    className="btn btn-primary w-full"
-                    data-tier={notesScore.tier}
-                  >
-                    {busy === "debrief" ? "Working…" : "Create summary"}
-                  </button>
-                  {!canDebrief && !busy && (
-                    <p className="mt-2 text-center text-xs text-ink-faint">
-                      Write, paste or photograph a few lines to get started.
-                    </p>
-                  )}
-                </div>
+                <NotesInput
+                  notes={active.notes}
+                  onChange={setNotes}
+                  onAppend={appendNotes}
+                />
+
+                <button
+                  type="button"
+                  onClick={runDebrief}
+                  disabled={!canDebrief}
+                  className="btn btn-primary w-full"
+                >
+                  {busy === "debrief" ? "Working…" : "Create Summary"}
+                </button>
+
+                {runs.length > 0 && (
+                  <p className="text-xs leading-relaxed text-ink-faint">
+                    Create a summary based on the notes you&rsquo;ve added.
+                  </p>
+                )}
               </div>
             )}
-            </div>
           </section>
 
           {/* ---------------- Output column ---------------- */}
