@@ -338,7 +338,6 @@ export default function Page() {
                   </button>
                   {!hasMinimumContext(active.context) && (
                     <p className="mt-2 text-center text-xs text-ink-faint">
-                      A title, a description, will get you started. 
                       The more you give, the better the briefing.
                     </p>
                   )}
@@ -348,11 +347,6 @@ export default function Page() {
               <div className="space-y-4">
                 <div>
                   <p className="label">Your notes from the session</p>
-                  <p className="prose-body mt-1.5 text-sm">
-                    Rough is fine. Fragments are fine. The model is instructed to work
-                    only from what is here, so gaps in your notes will show up as gaps
-                    in the summary rather than as invented detail.
-                  </p>
                 </div>
 
                 <NotesInput
@@ -447,7 +441,7 @@ export default function Page() {
                   {!busy && !latestDebrief && !visibleFailure && (
                     <EmptyState
                       title="Come back after the talk"
-                      body="Paste or upload your notes on the left. You'll get a summary, the takeaways you can post on social media.
+                      body="Paste or upload your notes and you'll get a summary, the takeaways you can post on social media.
                       You also get to see what went unanswered and a scorecard showing how the pre-session predictions actually held up."
                     />
                   )}

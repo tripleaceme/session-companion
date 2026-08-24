@@ -135,7 +135,7 @@ export function NotesInput({ notes, onChange, onAppend }: Props) {
           onChange={(e) => onChange(e.target.value)}
           onPaste={onPaste}
           placeholder={
-            "- what they claimed\n- what surprised you\n- what they dodged\n\nOr drop in a photo of your notebook, a slide, a PDF or a Word file — it gets transcribed into here, where you can edit it."
+            "- what they claimed\n- what surprised you\n- what they dodged\n\nOr drop in a photo of your notebook, a slide, a PDF or a Word file."
           }
           className="field font-mono text-[0.8125rem] leading-relaxed"
         />
@@ -199,9 +199,7 @@ export function NotesInput({ notes, onChange, onAppend }: Props) {
       />
 
       <p className="text-xs leading-relaxed text-ink-faint">
-        Photos, PDFs and Word files are transcribed into the box above — not summarised.
-        Read what lands there before you generate; it is the only thing the model will
-        be working from.
+        Photos, PDFs and Word files are transcribed into the box above.
       </p>
 
       {attachments.length > 0 && (
