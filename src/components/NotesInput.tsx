@@ -26,10 +26,9 @@ interface Props {
   onChange: (notes: string) => void;
   /** Atomic append — several files can finish while the textarea is being typed in. */
   onAppend: (text: string) => void;
-  onLoadSample: () => void;
 }
 
-export function NotesInput({ notes, onChange, onAppend, onLoadSample }: Props) {
+export function NotesInput({ notes, onChange, onAppend }: Props) {
   const [attachments, setAttachments] = useState<AttachmentStatus[]>([]);
   const [dragging, setDragging] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -169,14 +168,6 @@ export function NotesInput({ notes, onChange, onAppend, onLoadSample }: Props) {
           className="btn touch-only"
         >
           Take a photo
-        </button>
-
-        <button
-          type="button"
-          onClick={onLoadSample}
-          className="font-mono text-[0.625rem] uppercase tracking-[0.1em] text-ink-faint hover:text-signal"
-        >
-          Load sample notes
         </button>
 
         <span className="ml-auto font-mono text-[0.625rem] text-ink-faint">

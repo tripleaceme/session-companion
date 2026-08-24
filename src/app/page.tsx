@@ -4,7 +4,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSessions } from "@/hooks/useSessions";
 import { scoreContext, hasMinimumContext } from "@/lib/context-score";
 import { loadApiKey, newId } from "@/lib/storage";
-import { SAMPLE_NOTES } from "@/lib/sample-notes";
 import { ContextBreakdown, ContextMeter } from "@/components/ContextMeter";
 import { ContextForm } from "@/components/ContextForm";
 import { BriefingView } from "@/components/BriefingView";
@@ -360,7 +359,6 @@ export default function Page() {
                   notes={active.notes}
                   onChange={setNotes}
                   onAppend={appendNotes}
-                  onLoadSample={() => setNotes(SAMPLE_NOTES)}
                 />
 
                 <button
@@ -369,15 +367,12 @@ export default function Page() {
                   disabled={!canDebrief}
                   className="btn btn-primary w-full"
                 >
-                  {busy === "debrief" ? "Working…" : "Make sense of it"}
+                  {busy === "debrief" ? "Working…" : "Create Summary"}
                 </button>
 
                 {runs.length > 0 && (
                   <p className="text-xs leading-relaxed text-ink-faint">
-                    Your last briefing made{" "}
-                    {runs[runs.length - 1].briefing.likelyCoverage.length +
-                      runs[runs.length - 1].briefing.payAttentionTo.length}{" "}
-                    predictions. They&rsquo;ll be graded against these notes.
+                    Create a summary based on the notes you&rsquo;ve added.
                   </p>
                 )}
               </div>
@@ -452,7 +447,8 @@ export default function Page() {
                   {!busy && !latestDebrief && !visibleFailure && (
                     <EmptyState
                       title="Come back after the talk"
-                      body="Paste your notes on the left. You'll get a summary, the takeaways, what went unanswered and a scorecard showing how the pre-session predictions actually held up."
+                      body="Paste or upload your notes on the left. You'll get a summary, the takeaways you can post on social media.
+                      You also get to see what went unanswered and a scorecard showing how the pre-session predictions actually held up."
                     />
                   )}
                 </>
