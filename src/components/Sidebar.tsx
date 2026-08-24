@@ -34,7 +34,7 @@ export function Sidebar({
     <div className="flex h-full flex-col bg-inset/70">
       <div className="flex items-center justify-between gap-2 border-b border-rule px-4 py-4">
         <div>
-          <p className="font-display text-lg leading-none text-ink">Session Companion</p>
+          <p className="font-display text-lg leading-none text-ink">TalkAbout Sessions</p>
           <p className="label mt-1">History · stored on your device</p>
         </div>
         {onDismiss && (

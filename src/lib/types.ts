@@ -1,5 +1,5 @@
 /**
- * Domain model for the Session Companion.
+ * Domain model for the TalkAbout Sessions.
  *
  * The central idea of the app (and the talk it exists for) is that an AI answer
  * is only as trustworthy as the context behind it. So context is not a loose bag

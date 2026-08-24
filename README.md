@@ -1,4 +1,4 @@
-# Session Companion
+# TalkAbout Sessions
 
 A conference companion for a single talk: prepare before it, debrief after it, and — the actual point — **watch how the amount of context you supply changes what the AI can honestly tell you**.
 
