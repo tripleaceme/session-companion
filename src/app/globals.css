@@ -276,6 +276,17 @@ body::after {
   border-color: color-mix(in oklab, var(--color-signal) 86%, white);
 }
 
+/* Dimming a filled button to 40% turns the signal colour into mud. An outline
+   reads as "not ready yet" instead of "something rendered wrong", and keeps the
+   filled state meaning exactly one thing: this is ready to press. */
+.btn-primary:disabled {
+  opacity: 1;
+  color: var(--color-ink-faint);
+  background-color: transparent;
+  border-color: var(--color-rule-strong);
+  border-style: dashed;
+}
+
 } /* end @layer components */
 
 :where(a, button, input, textarea, [tabindex]):focus-visible {
