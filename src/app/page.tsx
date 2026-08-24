@@ -295,12 +295,13 @@ export default function Page() {
         <div className="grid min-h-0 flex-1 lg:grid-cols-[minmax(0,27rem)_minmax(0,1fr)]">
           {/* ---------------- Input column ---------------- */}
           <section
-            className={`min-h-0 overflow-y-auto border-rule px-4 pt-5 sm:px-5 lg:block lg:border-r ${
+            className={`min-h-0 overflow-y-auto border-rule lg:block lg:border-r ${
               pane === "input" ? "block" : "hidden"
             }`}
           >
             {phase === "before" ? (
-              <div className="space-y-6">
+              <div className="flex min-h-full flex-col px-4 pt-5 sm:px-5">
+                <div className="flex-1 space-y-6">
                 <ContextMeter score={score} />
 
                 <button
@@ -321,8 +322,9 @@ export default function Page() {
                   score={score}
                   onChange={updateContext}
                 />
+                </div>
 
-                <div className="footer-rail sticky bottom-0 -mx-4 bg-paper/95 px-4 backdrop-blur sm:-mx-5 sm:px-5">
+                <div className="footer-rail sticky bottom-0 -mx-4 mt-6 bg-paper/95 px-4 backdrop-blur sm:-mx-5 sm:px-5">
                   <button
                     type="button"
                     onClick={runBriefing}
@@ -345,31 +347,30 @@ export default function Page() {
                 </div>
               </div>
             ) : (
-              <div className="space-y-4">
-                <div>
+              <div className="flex min-h-full flex-col px-4 pt-5 sm:px-5">
+                <div className="flex-1 space-y-4">
                   <p className="label">Your notes from the session</p>
+
+                  <NotesInput
+                    notes={active.notes}
+                    onChange={setNotes}
+                    onAppend={appendNotes}
+                  />
                 </div>
 
-                <NotesInput
-                  notes={active.notes}
-                  onChange={setNotes}
-                  onAppend={appendNotes}
-                />
-
-                <button
-                  type="button"
-                  onClick={runDebrief}
-                  disabled={!canDebrief}
-                  className="btn btn-primary w-full"
-                >
-                  {busy === "debrief" ? "Working…" : "Create Summary"}
-                </button>
-
-                {runs.length > 0 && (
-                  <p className="text-xs leading-relaxed text-ink-faint">
+                <div className="footer-rail sticky bottom-0 -mx-4 mt-6 bg-paper/95 px-4 backdrop-blur sm:-mx-5 sm:px-5">
+                  <button
+                    type="button"
+                    onClick={runDebrief}
+                    disabled={!canDebrief}
+                    className="btn btn-primary w-full"
+                  >
+                    {busy === "debrief" ? "Working…" : "Create Summary"}
+                  </button>
+                  <p className="mt-2 text-center text-xs text-ink-faint">
                     Create a summary based on the notes you&rsquo;ve added.
                   </p>
-                )}
+                </div>
               </div>
             )}
           </section>
