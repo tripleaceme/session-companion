@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TalkAbout Sessions",
     description:
-      "Give it a little about a talk, or give it a lot.",
+      "Get a preview of the session you're about to attend.",
     type: "website",
     siteName: "TalkAbout Sessions",
   },
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TalkAbout Sessions",
     description:
-      "See how much of an AI's answer was grounded in what you gave it, and how much was guessed.",
+      "See what the speaker is likely to cover, what to expect, and the questions worth taking with you."
   },
 };
 

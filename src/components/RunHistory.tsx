@@ -122,7 +122,7 @@ export function CompareView({ a, b }: { a: BriefingRun; b: BriefingRun }) {
           </div>
           <div>
             <dt className="font-mono text-[0.5625rem] uppercase tracking-[0.1em] text-ink-faint">
-              Guessed claims
+              Uncertain claims
             </dt>
             <dd className="font-display text-3xl leading-none text-ink">
               {specDelta > 0 ? "+" : ""}
@@ -152,7 +152,7 @@ export function CompareView({ a, b }: { a: BriefingRun; b: BriefingRun }) {
                 {i === 0 ? "Less context" : "More context"} · {run.score.value}/100
               </p>
               <p className="font-mono text-[0.5625rem] text-ink-faint">
-                {leftTally.total ? `${tally(run).speculation} guesses` : ""}
+                {leftTally.total ? `${tally(run).speculation} uncertain` : ""}
               </p>
             </div>
 

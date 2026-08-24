@@ -15,7 +15,7 @@ const BRIEFING_STAGES = [
   "Noting what you left out",
   "Judging how much it can honestly claim",
   "Drafting predictions",
-  "Tagging each one as grounded, inferred or guessed",
+  "Tagging each one as grounded, inferred or uncertain",
 ];
 
 const DEBRIEF_STAGES = [

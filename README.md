@@ -64,7 +64,7 @@ Every session is stored in `localStorage` and listed in the sidebar, ChatGPT-sty
 
 The **grounding ledger** tallies this. It is the number the talk turns on:
 
-| Context | Confidence | Grounded | Inferred | Guessed |
+| Context | Confidence | Grounded | Inferred | Uncertain |
 |---|---|---|---|---|
 | Title only (12/100) | low | 0 | 0 | **8** |
 | Everything (99/100) | high | 1 | 8 | 2 |

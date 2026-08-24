@@ -138,13 +138,13 @@ export const TIER_COPY: Record<
     label: "Thin context",
     verdict: "Mostly pattern-matching on the title.",
     advice:
-      "Expect plausible-sounding guesses. Read the output as a hypothesis, not a briefing.",
+      "Most of what comes back will be marked uncertain. Read it as a hypothesis, not a briefing.",
   },
   partial: {
     label: "Partial context",
     verdict: "Grounded in places, inventing in others.",
     advice:
-      "The mix is the risk: correct claims sit beside confident guesses. Check the tags.",
+      "The mix is the risk: grounded claims sit beside uncertain ones. Check the tags.",
   },
   rich: {
     label: "Rich context",

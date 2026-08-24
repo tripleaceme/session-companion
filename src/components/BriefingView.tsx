@@ -6,7 +6,7 @@ import type { Briefing, BriefingRun, Grounding, Prediction } from "@/lib/types";
 const GROUNDING_COPY: Record<Grounding, { label: string; meaning: string }> = {
   grounded: { label: "grounded", meaning: "restates something you supplied" },
   inferred: { label: "inferred", meaning: "a short step from what you supplied" },
-  speculation: { label: "guess", meaning: "the topic name and general knowledge" },
+  speculation: { label: "uncertain", meaning: "the topic name and general knowledge" },
 };
 
 export function GroundingTag({ value }: { value: Grounding }) {
@@ -104,7 +104,7 @@ export function GroundingLedger({ briefing }: { briefing: Briefing }) {
         {segments.map((s) => (
           <div key={s.key}>
             <dt className="font-mono text-[0.5625rem] uppercase tracking-[0.1em] text-ink-faint">
-              {s.key === "speculation" ? "guessed" : s.key}
+              {s.key === "speculation" ? "uncertain" : s.key}
             </dt>
             <dd className="font-display text-2xl leading-none text-ink">{s.n}</dd>
           </div>
