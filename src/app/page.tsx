@@ -336,11 +336,12 @@ export default function Page() {
                         ? `Run again at ${score.value}/100`
                         : "Brief me"}
                   </button>
-                  {!hasMinimumContext(active.context) && (
-                    <p className="mt-2 text-center text-xs text-ink-faint">
-                      The more you give, the better the briefing.
-                    </p>
-                  )}
+                  {/* Always shown. This is true at 12/100 and at 80/100, unlike
+                      the empty-state prompt it replaced, which only made sense
+                      before the form had anything in it at all. */}
+                  <p className="mt-2 text-center text-xs text-ink-faint">
+                    The more you give, the better the briefing.
+                  </p>
                 </div>
               </div>
             ) : (
