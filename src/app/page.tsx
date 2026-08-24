@@ -13,6 +13,7 @@ import { DebriefView } from "@/components/DebriefView";
 import { Sidebar } from "@/components/Sidebar";
 import { SettingsDialog } from "@/components/SettingsDialog";
 import { EmptyState, ErrorPanel, LoadingPanel } from "@/components/Feedback";
+import { NotesInput } from "@/components/NotesInput";
 import type { Briefing, Debrief, SessionContext } from "@/lib/types";
 
 type Phase = "before" | "after";
@@ -36,6 +37,7 @@ export default function Page() {
     active,
     updateContext,
     setNotes,
+    appendNotes,
     addRun,
     addDebrief,
     storageWarning,
@@ -337,7 +339,8 @@ export default function Page() {
                   </button>
                   {!hasMinimumContext(active.context) && (
                     <p className="mt-2 text-center text-xs text-ink-faint">
-                      A title, a description, or a speaker name. Any one will do.
+                      A title, a description, will get you started. 
+                      The more you give, the better the briefing.
                     </p>
                   )}
                 </div>
@@ -353,26 +356,12 @@ export default function Page() {
                   </p>
                 </div>
 
-                <textarea
-                  value={active.notes}
-                  rows={18}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder={"- what they claimed\n- what surprised you\n- what they dodged"}
-                  className="field font-mono text-[0.8125rem] leading-relaxed"
+                <NotesInput
+                  notes={active.notes}
+                  onChange={setNotes}
+                  onAppend={appendNotes}
+                  onLoadSample={() => setNotes(SAMPLE_NOTES)}
                 />
-
-                <div className="flex items-center justify-between gap-3">
-                  <span className="font-mono text-[0.625rem] text-ink-faint">
-                    {active.notes.trim().length} characters
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setNotes(SAMPLE_NOTES)}
-                    className="font-mono text-[0.625rem] uppercase tracking-[0.1em] text-ink-faint hover:text-signal"
-                  >
-                    Load sample notes
-                  </button>
-                </div>
 
                 <button
                   type="button"
@@ -441,7 +430,7 @@ export default function Page() {
                   {!busy && !selectedRun && !visibleFailure && (
                     <EmptyState
                       title="Nothing generated yet"
-                      body="Give it whatever you have about the session — even just a title. Then add more and run it again, and watch which claims stop being guesses."
+                      body="Give it whatever you have about the session. Then add more and run it again."
                     />
                   )}
                 </>
@@ -463,7 +452,7 @@ export default function Page() {
                   {!busy && !latestDebrief && !visibleFailure && (
                     <EmptyState
                       title="Come back after the talk"
-                      body="Paste your notes on the left. You'll get a summary, the takeaways, what went unanswered — and a scorecard showing how the pre-session predictions actually held up."
+                      body="Paste your notes on the left. You'll get a summary, the takeaways, what went unanswered and a scorecard showing how the pre-session predictions actually held up."
                     />
                   )}
                 </>

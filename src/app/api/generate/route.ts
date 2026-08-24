@@ -57,11 +57,14 @@ export async function POST(request: Request) {
   const mode: Mode = body.mode === "debrief" ? "debrief" : "briefing";
   const context = sanitizeContext(body.context);
 
-  if (!hasMinimumContext(context)) {
+  // Only the briefing needs session context — it has nothing else to work from.
+  // A debrief is driven by the attendee's notes, and someone who walks out of a
+  // talk and photographs their notebook has every right to skip the form.
+  if (mode === "briefing" && !hasMinimumContext(context)) {
     return fail(
       400,
       "Give me at least a title, a description, or a speaker name.",
-      "Even one of the three is enough to start — that's rather the point.",
+      "Even one of the three is enough to start.",
     );
   }
 

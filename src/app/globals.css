@@ -256,6 +256,14 @@ body::after {
 }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+/* Camera capture is only a distinct affordance on a touch device; on a desktop
+   `capture` degrades to a second file picker, so hide the button there. Done in
+   CSS rather than JS so there is no pointer-detection state to hydrate. */
+.touch-only { display: none; }
+@media (pointer: coarse) {
+  .touch-only { display: inline-flex; }
+}
+
 .btn-primary {
   color: var(--color-paper);
   background-color: var(--color-signal);

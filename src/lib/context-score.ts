@@ -50,7 +50,7 @@ export const FIELDS: FieldSpec[] = [
     label: "Session description",
     hint: "The abstract from the programme. The single most useful thing you can paste.",
     placeholder:
-      "Paste the full abstract here — every sentence measurably sharpens the briefing.",
+      "Paste the full abstract here, since every sentence measurably sharpens the briefing.",
     weight: 18,
     target: 400,
     rows: 5,
@@ -72,7 +72,7 @@ export const FIELDS: FieldSpec[] = [
     label: "Speaker announcement",
     hint: "The post that announced them. Often hints at the angle better than the abstract.",
     placeholder:
-      "The tweet / LinkedIn post the conference published when announcing this talk.",
+      "The tweet / Instagram / LinkedIn / website post that the conference published when announcing this talk.",
     weight: 12,
     target: 300,
     rows: 4,
@@ -81,7 +81,7 @@ export const FIELDS: FieldSpec[] = [
   {
     key: "priorWork",
     label: "Prior talks, articles, projects",
-    hint: "The strongest signal of all — people talk about what they've been building.",
+    hint: "The strongest signal of all since people talk about what they've been building.",
     placeholder:
       "Titles of past talks, blog posts, open-source projects, a company they founded…",
     weight: 14,
@@ -92,7 +92,7 @@ export const FIELDS: FieldSpec[] = [
   {
     key: "links",
     label: "Links & profiles",
-    hint: "Website, GitHub, LinkedIn. Paste URLs — or better, paste what's on them.",
+    hint: "Website, GitHub, LinkedIn. Paste URLs or better, paste what's on them.",
     placeholder: "https://…  (one per line)",
     weight: 10,
     target: 120,

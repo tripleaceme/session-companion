@@ -29,6 +29,7 @@ export interface SessionsApi {
   clearAll: () => void;
   updateContext: (patch: Partial<SessionContext>) => void;
   setNotes: (notes: string) => void;
+  appendNotes: (text: string) => void;
   addRun: (run: BriefingRun) => void;
   addDebrief: (run: DebriefRun) => void;
 }
@@ -110,6 +111,23 @@ export function useSessions(): SessionsApi {
     [mutateActive],
   );
 
+  /**
+   * Append rather than replace.
+   *
+   * Transcriptions land one file at a time and the attendee may well be typing
+   * between them. Reading the current notes into a component and writing back a
+   * concatenated string would drop whichever change lost the race; deriving the
+   * new value from the session inside the store cannot.
+   */
+  const appendNotes = useCallback(
+    (text: string) =>
+      mutateActive((session) => ({
+        ...session,
+        notes: session.notes.trim() ? `${session.notes.trimEnd()}\n\n${text}` : text,
+      })),
+    [mutateActive],
+  );
+
   const addRun = useCallback(
     (run: BriefingRun) =>
       mutateActive((session) => ({ ...session, runs: [...session.runs, run] })),
@@ -137,6 +155,7 @@ export function useSessions(): SessionsApi {
     clearAll,
     updateContext,
     setNotes,
+    appendNotes,
     addRun,
     addDebrief,
   };

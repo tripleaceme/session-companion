@@ -32,7 +32,23 @@ You get back what it will probably cover, what to pay attention to, concepts wor
 
 ### After a session
 
-Paste your notes. You get a summary, the key takeaways, what was left unanswered, and a LinkedIn post you could actually publish — plus a scorecard grading the pre-session predictions against what actually happened.
+Get your notes in however you actually captured them:
+
+| Input | How it's read |
+|---|---|
+| Typed or pasted | Straight into the box |
+| Photo of a notebook, whiteboard or slide | Gemini, natively — no OCR library |
+| Camera capture | Rear camera on phones, one tap |
+| Screenshot on the clipboard | Just paste into the notes box |
+| PDF | Gemini, page by page |
+| `.docx` | Unzipped locally — a Word file is a ZIP, not a picture of words |
+| `.txt` / `.md` | Read in the browser; never uploaded |
+
+Files can also be dropped straight onto the notes box. Each one reports its own progress, and every extraction is **transcribed, not summarised** — it lands in the textarea where you can read and edit it before generating. That's deliberate. An app arguing that you should be able to audit what the model was told cannot quietly swallow a photograph into a prompt you never see.
+
+Then you get a summary, the key takeaways, what was left unanswered, a publishable LinkedIn post — and a scorecard grading the pre-session predictions against what actually happened.
+
+You can debrief a session you never briefed. The notes are the context.
 
 ### History
 

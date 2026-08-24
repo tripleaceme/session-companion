@@ -35,7 +35,7 @@ export function Sidebar({
       <div className="flex items-center justify-between gap-2 border-b border-rule px-4 py-4">
         <div>
           <p className="font-display text-lg leading-none text-ink">Session Companion</p>
-          <p className="label mt-1">History · stored on this device</p>
+          <p className="label mt-1">History · stored on your device</p>
         </div>
         {onDismiss && (
           <button
@@ -135,7 +135,6 @@ export function Sidebar({
         )}
 
         <p className="pt-1 text-center font-mono text-[0.5rem] uppercase tracking-[0.1em] text-ink-faint">
-          Nothing leaves this browser except your prompts
         </p>
       </div>
     </div>
