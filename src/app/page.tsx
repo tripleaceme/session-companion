@@ -13,6 +13,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { SettingsDialog } from "@/components/SettingsDialog";
 import { EmptyState, ErrorPanel, LoadingPanel } from "@/components/Feedback";
 import { NotesInput } from "@/components/NotesInput";
+import { InstallBanner } from "@/components/InstallBanner";
 import type { Briefing, Debrief, SessionContext } from "@/lib/types";
 
 type Phase = "before" | "after";
@@ -285,6 +286,8 @@ export default function Page() {
             ))}
           </div>
         </header>
+
+        <InstallBanner />
 
         {storageWarning && (
           <p className="shrink-0 border-b border-rule bg-raised px-4 py-1.5 font-mono text-[0.625rem] text-thin">
