@@ -28,14 +28,19 @@ const plexMono = IBM_Plex_Mono({
 
 /**
  * Social previews need an absolute URL, so opengraph-image.png cannot be
- * resolved without a base. Vercel exposes the production host at build time;
- * set SITE_URL once there is a custom domain, so shared links point at the real
- * address rather than the generated *.vercel.app one.
+ * resolved without a base.
+ *
+ * The canonical host is hardcoded rather than read from Vercel's generated
+ * `VERCEL_PROJECT_PRODUCTION_URL`, which would point every shared card at the
+ * *.vercel.app address even when the page was opened on the real domain. This
+ * page is statically rendered, so it cannot look at the request host — the
+ * canonical name has to be a build-time fact. SITE_URL still overrides it for
+ * anyone running a fork on a different host.
  */
 const siteUrl =
   process.env.SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  (process.env.NODE_ENV === "production"
+    ? "https://talkabout.ayoadeabel.tech"
     : "http://localhost:3000");
 
 export const metadata: Metadata = {
@@ -50,7 +55,11 @@ export const metadata: Metadata = {
       "Get a preview of the session you're about to attend.",
     type: "website",
     siteName: "TalkAbout Sessions",
+    // Resolved against metadataBase. Without it a card shared from the old
+    // *.vercel.app host would claim that host as the canonical page.
+    url: "/",
   },
+  alternates: { canonical: "/" },
   twitter: {
     card: "summary_large_image",
     title: "TalkAbout Sessions",
