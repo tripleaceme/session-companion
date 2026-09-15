@@ -37,8 +37,7 @@ export function InstallBanner() {
           Install
         </p>
         <p className="min-w-0 flex-1 text-xs leading-snug text-ink-dim">
-          Add TalkAbout to your home screen — it opens like an app, and your saved
-          sessions stay readable with no signal.
+          Add TalkAbout to your home screen, so you can launch it like a native app.
         </p>
 
         {pwa.installable ? (
@@ -74,7 +73,7 @@ export function InstallBanner() {
           is name the two taps it actually takes. */}
       {showIosHelp && (
         <p className="border-t border-rule px-4 py-2 text-xs leading-relaxed text-ink-faint">
-          Tap <span className="text-ink">Share</span> at the bottom of Safari, then{" "}
+          Tap <span className="text-ink">Share</span> at the bottom of your browser, then{" "}
           <span className="text-ink">Add to Home Screen</span>.
         </p>
       )}
